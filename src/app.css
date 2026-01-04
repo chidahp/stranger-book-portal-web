@@ -3,21 +3,23 @@
 
 
 :root {
-  --background-rgb: 214, 219, 220;
+  /* Default: Light mode (white) */
+  --background-rgb: 255, 255, 255;
   --foreground-rgb: 0, 0, 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background-rgb: 0, 0, 0;
-    --foreground-rgb: 255, 255, 255;
-  }
+/* Dark mode - can be toggled by adding 'dark' class to html or body */
+.dark,
+[data-theme="dark"] {
+  --background-rgb: 0, 0, 0;
+  --foreground-rgb: 255, 255, 255;
 }
 
 body {
   background: rgb(var(--background-rgb));
   color: rgb(var(--foreground-rgb));
   font-family: "IBM Plex Sans Thai", sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 @keyframes fade-in {
@@ -38,6 +40,21 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.3s ease-out;
 }
 
 .animate-fade-in {
