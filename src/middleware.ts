@@ -4,7 +4,6 @@ export default createMiddleware({
   onRequest: [
     (event) => {
       const url = new URL(event.request.url);
-      console.log(process.env.VITE_SITE_MAINTENANCE);
       const isMaintenanceMode = process.env.VITE_SITE_MAINTENANCE === "true";
       const bypassKey = url.searchParams.get("bypass");
       
