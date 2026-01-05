@@ -73,7 +73,7 @@ export default function Carousel(props: CarouselProps) {
 
   return (
     <div 
-      class="relative w-full h-[500px] md:h-[600px] overflow-hidden"
+      class="relative w-full h-[250px] sm:h-[350px] md:h-[450px] lg:h-[500px] xl:h-[600px] overflow-hidden m-0 p-0"
       onMouseEnter={pauseAutoPlay}
       onMouseLeave={() => isAutoPlaying() && startAutoPlay()}
     >
@@ -99,12 +99,12 @@ export default function Carousel(props: CarouselProps) {
                     "bg-gradient-to-br from-black to-gray-900": !item.background
                   }}
                 >
-                  <div class="text-center text-white px-6">
+                  <div class="text-center text-white px-4 sm:px-6">
                     {item.title && (
-                      <h2 class="text-3xl md:text-5xl font-bold mb-4">{item.title}</h2>
+                      <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-2 sm:mb-4">{item.title}</h2>
                     )}
                     {item.description && (
-                      <p class="text-lg md:text-xl text-gray-300">{item.description}</p>
+                      <p class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300">{item.description}</p>
                     )}
                   </div>
                 </div>
@@ -118,31 +118,31 @@ export default function Carousel(props: CarouselProps) {
       <Show when={props.items.length > 1}>
         <button
           onClick={prevSlide}
-          class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-yellow-500 p-2 rounded-full transition-all duration-300 z-10"
+          class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-yellow-500 p-1.5 sm:p-2 rounded-full transition-all duration-300 z-10"
           aria-label="Previous slide"
         >
-          <ChevronLeft class="w-6 h-6" />
+          <ChevronLeft class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
         </button>
         <button
           onClick={nextSlide}
-          class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-yellow-500 p-2 rounded-full transition-all duration-300 z-10"
+          class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-yellow-500 p-1.5 sm:p-2 rounded-full transition-all duration-300 z-10"
           aria-label="Next slide"
         >
-          <ChevronRight class="w-6 h-6" />
+          <ChevronRight class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
         </button>
       </Show>
 
       {/* Dots Indicator */}
       <Show when={props.items.length > 1}>
-        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
+        <div class="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 flex space-x-1.5 sm:space-x-2 z-10">
           <For each={props.items}>
             {(_, index) => (
               <button
                 onClick={() => goToSlide(index())}
-                class={`w-2 h-2 rounded-full transition-all duration-300 ${
+                class={`h-1.5 sm:h-2 rounded-full transition-all duration-300 ${
                   currentIndex() === index()
-                    ? "bg-yellow-500 w-8"
-                    : "bg-gray-400 hover:bg-gray-300"
+                    ? "bg-yellow-500 w-6 sm:w-8"
+                    : "bg-gray-400 hover:bg-gray-300 w-1.5 sm:w-2"
                 }`}
                 aria-label={`Go to slide ${index() + 1}`}
               />
