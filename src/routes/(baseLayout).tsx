@@ -1,12 +1,16 @@
 import { JSX } from "solid-js";
 import Nav from "~/components/Nav";
+import Footer from "~/components/Footer";
 
 
 export default function BaseLayout({ children }: { children: JSX.Element }) {
   return (
-    <div>
+    <div class="flex flex-col min-h-screen">
       <Nav />
-      {children}
+      <main>
+        {children}
+      </main>
+      <Footer />
     </div>
   );
 }
